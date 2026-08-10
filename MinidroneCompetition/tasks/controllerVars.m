@@ -27,7 +27,7 @@ switch model
   case 'RollingSpider'
     Controller.takeoffGain = 0.2;   %drone takes off with constant thrust x% above hover thrust
   case 'Mambo'
-    Controller.takeoffGain = 0.45;   %drone takes off with constant thrust x% above hover thrust
+    Controller.takeoffGain = 0.15;   % 起飞慢升: 0.5s 起飞模式推力仅高于悬停 15%, 避免离地瞬间上冲 (原 0.45)
 end
 Controller.totalThrustMaxRelative = 0.92;   %relative maximum total thrust that can be used for gaining altitude; rest is buffer for orientation control
 Controller.motorsThrustPerMotorMax = Vehicle.Motor.maxLimit*Vehicle.Motor.commandToW2Gain*...
