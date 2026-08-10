@@ -57,6 +57,19 @@ WPs = nan(2, MAXWP);
 WPs(1, 1:nSeg+1) = wx;
 WPs(2, 1:nSeg+1) = wy;
 
+% initial XY position for the estimator frame (arena coordinates),
+% read from initData.posNED - not hardcoded.
+initPosXY = [0.5; 1.0];
+if ~isempty(f)
+    try
+        S = load(f);
+        if isfield(S, 'posNED') && numel(S.posNED) >= 2
+            initPosXY = S.posNED(1:2)';
+        end
+    catch
+    end
+end
+assignin('base', 'initPosXY', initPosXY);
 assignin('base', 'trackWPs', WPs);
 assignin('base', 'trackNSeg', nSeg);
 end
