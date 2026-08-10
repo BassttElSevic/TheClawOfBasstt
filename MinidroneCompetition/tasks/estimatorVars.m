@@ -78,6 +78,8 @@ Estimator.pos.kfVelo.B = [Ts 0;
                                                   0 0];
 Estimator.pos.kfVelo.C = [1 0 0 0; 0 1 0 0];
 Estimator.pos.kfVelo.D = 0;
+Estimator.pos.kfVelo.G = zeros(4,1);   % 新版 ctrlSharedLib Kalman Filter 需要这两个字段 (UseGH=off, 仅求值不参与计算)
+Estimator.pos.kfVelo.H = 0;
 
 Estimator.pos.kfVelo.Q = [0.09 0 0 0;
                                                   0 0.09 0 0;
