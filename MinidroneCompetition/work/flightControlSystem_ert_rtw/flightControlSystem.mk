@@ -2,7 +2,7 @@
 ## Makefile generated for component 'flightControlSystem'. 
 ## 
 ## Makefile     : flightControlSystem.mk
-## Generated on : Wed Jul 22 14:19:11 2026
+## Generated on : Mon Aug 10 17:48:25 2026
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/flightControlSystem.so
 ## Product type : executable
 ## 
@@ -18,8 +18,8 @@
 
 PRODUCT_NAME              = flightControlSystem
 MAKEFILE                  = flightControlSystem.mk
-MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2025b
-MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2025b/bin
+MATLAB_ROOT               = D:/
+MATLAB_BIN                = D://bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
 START_DIR                 = D:/drone/PAW/MinidroneCompetition/work
 SOLVER                    = 
@@ -37,7 +37,7 @@ CPP_STANDARD_OPTS         =
 
 # Toolchain Name:          Sourcery G++ Lite GNU Toolchain for Drones
 # Supported Version(s):    
-# ToolchainInfo Version:   2025b
+# ToolchainInfo Version:   2026a
 # Specification Revision:  1.0
 # 
 #-------------------------------------------
@@ -58,6 +58,19 @@ SHELL                      = %SystemRoot%/system32/cmd.exe
 TOOLCHAIN_SRCS = 
 TOOLCHAIN_INCS = 
 TOOLCHAIN_LIBS = -lm -lm
+
+FORMAT_FOR_ECHO_CMD              = $(strip $(subst >,^>,\
+	$(subst <,^<,\
+	$(subst |,^|,\
+	$(subst &,^&,\
+	$(subst ",^",\
+	$(subst ^,^^,\
+	$1)))))))
+FORMAT_FOR_ECHO                  = $(FORMAT_FOR_ECHO_CMD)
+HASH                             = \#
+SEMICOLON                        = ;
+UNESCAPE_SEMICOLONS              = $(subst \;,;,$1)
+ADD_QUOTES                       = $(foreach aPath,$1,"$(aPath)")
 
 #------------------------
 # BUILD TOOL COMMANDS
@@ -156,7 +169,7 @@ BUILD_TYPE = "Top-Level Standalone Executable"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -IC:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/include -I$(START_DIR)/flightControlSystem_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -I$(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils
+INCLUDES_BUILDINFO = -I$(START_DIR) -IC:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/include -I$(START_DIR)/flightControlSystem_ert_rtw -ID:/extern/include -ID:/simulink/include -ID:/rtw/c/src -ID:/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -I$(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -177,7 +190,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/rsedu_image.c $(START_DIR)/flightControlSystem_ert_rtw/flightControlSystem.c $(START_DIR)/flightControlSystem_ert_rtw/flightControlSystem_data.c $(START_DIR)/flightControlSystem_ert_rtw/rtGetInf.c $(START_DIR)/flightControlSystem_ert_rtw/rtGetNaN.c $(START_DIR)/flightControlSystem_ert_rtw/rt_nonfinite.c C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/rsedu_control.c C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/rsedu_of.c C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/rsedu_vis.c C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/ptimer.c C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/controlCommand.c C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/mw_extrathreads.c
+SRCS = C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/rsedu_image.c $(START_DIR)/flightControlSystem_ert_rtw/flightControlSystem.c $(START_DIR)/flightControlSystem_ert_rtw/flightControlSystem_data.c $(START_DIR)/flightControlSystem_ert_rtw/rtGetInf.c $(START_DIR)/flightControlSystem_ert_rtw/rtGetNaN.c $(START_DIR)/flightControlSystem_ert_rtw/rt_nonfinite.c C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/rsedu_control.c C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/rsedu_of.c C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/rsedu_vis.c C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/ptimer.c C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/controlCommand.c C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/mw_extrathreads.c
 
 ALL_SRCS = $(SRCS)
 
@@ -287,14 +300,14 @@ build:
 
 
 all : build
-	@echo "### Successfully generated all binary outputs."
+	@echo $(call FORMAT_FOR_ECHO,### Successfully generated all binary outputs.)
 
 
 build : prebuild $(PRODUCT)
 
 
 buildobj : prebuild $(OBJS) $(PREBUILT_OBJS)
-	@echo "### Successfully generated all binary outputs."
+	@echo $(call FORMAT_FOR_ECHO,### Successfully generated all binary outputs.)
 
 
 prebuild : 
@@ -304,9 +317,9 @@ download : $(PRODUCT)
 
 
 execute : download
-	@echo "### Invoking postbuild tool "Execute" ..."
+	@echo $(call FORMAT_FOR_ECHO,### Invoking postbuild tool Execute ...)
 	$(EXECUTE) $(EXECUTE_FLAGS)
-	@echo "### Done invoking postbuild tool."
+	@echo $(call FORMAT_FOR_ECHO,### Done invoking postbuild tool.)
 
 
 ###########################################################################
@@ -318,9 +331,9 @@ execute : download
 #-------------------------------------------
 
 $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS)
-	@echo "### Creating standalone executable "$(PRODUCT)" ..."
+	@echo $(call FORMAT_FOR_ECHO,### Creating standalone executable "$(PRODUCT)" ...)
 	$(LD) $(LDFLAGS) -o $(PRODUCT) $(OBJS) $(SYSTEM_LIBS) $(TOOLCHAIN_LIBS)
-	@echo "### Created: $(PRODUCT)"
+	@echo $(call FORMAT_FOR_ECHO,### Created: "$(PRODUCT)")
 
 
 ###########################################################################
@@ -363,31 +376,31 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.o : $(MATLAB_ROOT)/rtw/c/src/%.c
+%.o : D:/rtw/c/src/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.o : $(MATLAB_ROOT)/rtw/c/src/%.cpp
+%.o : D:/rtw/c/src/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.o : $(MATLAB_ROOT)/simulink/src/%.c
+%.o : D:/simulink/src/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.o : $(MATLAB_ROOT)/simulink/src/%.cpp
+%.o : D:/simulink/src/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.o : $(MATLAB_ROOT)/toolbox/simulink/blocks/src/%.c
+%.o : D:/toolbox/simulink/blocks/src/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.o : $(MATLAB_ROOT)/toolbox/simulink/blocks/src/%.cpp
+%.o : D:/toolbox/simulink/blocks/src/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-rsedu_image.o : C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/rsedu_image.c
+rsedu_image.o : C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/rsedu_image.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
@@ -411,27 +424,27 @@ rt_nonfinite.o : $(START_DIR)/flightControlSystem_ert_rtw/rt_nonfinite.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-rsedu_control.o : C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/rsedu_control.c
+rsedu_control.o : C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/rsedu_control.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-rsedu_of.o : C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/rsedu_of.c
+rsedu_of.o : C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/rsedu_of.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-rsedu_vis.o : C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/rsedu_vis.c
+rsedu_vis.o : C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/rsedu_vis.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-ptimer.o : C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/ptimer.c
+ptimer.o : C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/ptimer.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-controlCommand.o : C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/controlCommand.c
+controlCommand.o : C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/controlCommand.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-mw_extrathreads.o : C:/ProgramData/MATLAB/SupportPackages/R2025b/toolbox/target/supportpackages/parrot/src/mw_extrathreads.c
+mw_extrathreads.o : C:/ProgramData/MATLAB/SupportPackages/R2026a/toolbox/target/supportpackages/parrot/src/mw_extrathreads.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
@@ -447,31 +460,31 @@ $(ALL_OBJS) : rtw_proj.tmw $(MAKEFILE)
 ###########################################################################
 
 info : 
-	@echo "### PRODUCT = $(PRODUCT)"
-	@echo "### PRODUCT_TYPE = $(PRODUCT_TYPE)"
-	@echo "### BUILD_TYPE = $(BUILD_TYPE)"
-	@echo "### INCLUDES = $(INCLUDES)"
-	@echo "### DEFINES = $(DEFINES)"
-	@echo "### ALL_SRCS = $(ALL_SRCS)"
-	@echo "### ALL_OBJS = $(ALL_OBJS)"
-	@echo "### LIBS = $(LIBS)"
-	@echo "### MODELREF_LIBS = $(MODELREF_LIBS)"
-	@echo "### SYSTEM_LIBS = $(SYSTEM_LIBS)"
-	@echo "### TOOLCHAIN_LIBS = $(TOOLCHAIN_LIBS)"
-	@echo "### CFLAGS = $(CFLAGS)"
-	@echo "### LDFLAGS = $(LDFLAGS)"
-	@echo "### SHAREDLIB_LDFLAGS = $(SHAREDLIB_LDFLAGS)"
-	@echo "### CPPFLAGS = $(CPPFLAGS)"
-	@echo "### CPP_LDFLAGS = $(CPP_LDFLAGS)"
-	@echo "### CPP_SHAREDLIB_LDFLAGS = $(CPP_SHAREDLIB_LDFLAGS)"
-	@echo "### ARFLAGS = $(ARFLAGS)"
-	@echo "### MEX_CFLAGS = $(MEX_CFLAGS)"
-	@echo "### MEX_CPPFLAGS = $(MEX_CPPFLAGS)"
-	@echo "### MEX_LDFLAGS = $(MEX_LDFLAGS)"
-	@echo "### MEX_CPPLDFLAGS = $(MEX_CPPLDFLAGS)"
-	@echo "### DOWNLOAD_FLAGS = $(DOWNLOAD_FLAGS)"
-	@echo "### EXECUTE_FLAGS = $(EXECUTE_FLAGS)"
-	@echo "### MAKE_FLAGS = $(MAKE_FLAGS)"
+	@echo $(call FORMAT_FOR_ECHO,### PRODUCT = $(PRODUCT))
+	@echo $(call FORMAT_FOR_ECHO,### PRODUCT_TYPE = $(PRODUCT_TYPE))
+	@echo $(call FORMAT_FOR_ECHO,### BUILD_TYPE = $(BUILD_TYPE))
+	@echo $(call FORMAT_FOR_ECHO,### INCLUDES = $(INCLUDES))
+	@echo $(call FORMAT_FOR_ECHO,### DEFINES = $(DEFINES))
+	@echo $(call FORMAT_FOR_ECHO,### ALL_SRCS = $(ALL_SRCS))
+	@echo $(call FORMAT_FOR_ECHO,### ALL_OBJS = $(ALL_OBJS))
+	@echo $(call FORMAT_FOR_ECHO,### LIBS = $(LIBS))
+	@echo $(call FORMAT_FOR_ECHO,### MODELREF_LIBS = $(MODELREF_LIBS))
+	@echo $(call FORMAT_FOR_ECHO,### SYSTEM_LIBS = $(SYSTEM_LIBS))
+	@echo $(call FORMAT_FOR_ECHO,### TOOLCHAIN_LIBS = $(TOOLCHAIN_LIBS))
+	@echo $(call FORMAT_FOR_ECHO,### CFLAGS = $(CFLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### LDFLAGS = $(LDFLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### SHAREDLIB_LDFLAGS = $(SHAREDLIB_LDFLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### CPPFLAGS = $(CPPFLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### CPP_LDFLAGS = $(CPP_LDFLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### CPP_SHAREDLIB_LDFLAGS = $(CPP_SHAREDLIB_LDFLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### ARFLAGS = $(ARFLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### MEX_CFLAGS = $(MEX_CFLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### MEX_CPPFLAGS = $(MEX_CPPFLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### MEX_LDFLAGS = $(MEX_LDFLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### MEX_CPPLDFLAGS = $(MEX_CPPLDFLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### DOWNLOAD_FLAGS = $(DOWNLOAD_FLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### EXECUTE_FLAGS = $(EXECUTE_FLAGS))
+	@echo $(call FORMAT_FOR_ECHO,### MAKE_FLAGS = $(MAKE_FLAGS))
 
 
 clean : 
