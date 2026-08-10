@@ -48,6 +48,14 @@ else
 	init.posNED = [0.5, 1, -0.046];
 end
 
+% 刷新 pathStateMachine 用的赛道参数 (trackWPs / trackNSeg)
+try
+    loadTrackForController;
+catch
+    rehash toolboxreset;   % MATLAB 装在 D 盘根目录, 工具箱路径缓存可能过期, 刷新后重试
+    loadTrackForController;
+end
+
 init.vb = [0 0 0];
 init.euler = [0 0 0];
 init.angRates = [0 0 0];
